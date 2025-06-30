@@ -15,7 +15,7 @@ import lombok.Data;
 public class User implements Serializable {
     private static final long serialVersionUID = -310330648122542937L;
     /**
-     * id
+     * id（指定主键策略）
      */
     @TableId(type = IdType.ASSIGN_ID)
     private Long id;
@@ -66,7 +66,7 @@ public class User implements Serializable {
     private Date updateTime;
 
     /**
-     * 是否删除
+     * 是否删除 （逻辑删除）
      */
     @TableLogic
     private Integer isDelete;
