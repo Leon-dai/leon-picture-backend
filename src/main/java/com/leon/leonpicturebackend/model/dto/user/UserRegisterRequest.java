@@ -1,4 +1,4 @@
-package com.leon.leonpicturebackend.model.dto;
+package com.leon.leonpicturebackend.model.dto.user;
 
 import lombok.Data;
 
