@@ -1,10 +1,14 @@
 package com.leon.leonpicturebackend.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.leon.leonpicturebackend.model.dto.user.UserQueryRequest;
 import com.leon.leonpicturebackend.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.leon.leonpicturebackend.model.vo.LoginUserVO;
+import com.leon.leonpicturebackend.model.vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
 * @author leon
@@ -62,4 +66,27 @@ public interface UserService extends IService<User> {
      */
     boolean userLogout(HttpServletRequest request);
 
+    /**
+     * 获取脱敏后的用户信息
+     *
+     * @param user
+     * @return
+     */
+    UserVO getUserVO(User user);
+
+    /**
+     * 获取脱敏后的用户列表
+     *
+     * @param userList
+     * @return
+     */
+    List<UserVO> getUserVOList(List<User> userList);
+
+    /**
+     * 获取查询条件
+     *
+     * @param userQueryRequest
+     * @return
+     */
+    QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
 }
