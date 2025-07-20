@@ -1,11 +1,16 @@
 package com.leon.leonpicturebackend.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.leon.leonpicturebackend.model.dto.picture.PictureQueryRequest;
 import com.leon.leonpicturebackend.model.dto.picture.PictureUploadRequest;
 import com.leon.leonpicturebackend.model.entity.Picture;
 import com.leon.leonpicturebackend.model.entity.User;
 import com.leon.leonpicturebackend.model.vo.PictureVO;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
 * @author leon
@@ -25,4 +30,16 @@ public interface PictureService extends IService<Picture> {
                             PictureUploadRequest pictureUploadRequest,
                             User loginUser);
 
+    /**
+     * 分页查询图片
+     * @param pictureQueryRequest
+     * @return
+     */
+    QueryWrapper<Picture> getQueryWrapper(PictureQueryRequest pictureQueryRequest);
+
+    PictureVO getPictureVO(Picture picture, HttpServletRequest request);
+
+    Page<PictureVO> getPictureVOPage(Page<Picture> picturePage, HttpServletRequest request);
+
+    void validPicture(Picture picture);
 }
